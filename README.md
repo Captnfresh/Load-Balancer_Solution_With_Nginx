@@ -22,6 +22,10 @@ This project consists of two parts:
 1. Configure Nginx as a Load Balancer.
 2. Register a new domain name and configure secured connection using SSL/TLS certificates.
 
+Target architecture will look like:
+
+![image 1]()
+
 
 ## Part 1: Configure Nginx as a Load Balancer
 
@@ -35,6 +39,10 @@ This project consists of two parts:
 
 * Update the /etc/hosts file for local DNS with the web servers' names (e.g., Web1, Web2) and their local IP addresses.
 
+![image 2]()
+
+![image 3]()
+
 
 2. Install and Configure Nginx as a Load Balancer.
 
@@ -43,6 +51,10 @@ This project consists of two parts:
 sudo apt update
 sudo apt install nginx
 ```
+![image 4]()
+
+![image 5]()
+
 
 * Open the Nginx configuration file:
 
@@ -69,6 +81,8 @@ server {
 ```
 Comment out this line: ```# include /etc/nginx/sites-enabled/*;```
 
+image 6
+
 3. Restart Nginx to apply the changes:
 
 ```
@@ -81,9 +95,11 @@ sudo systemctl status nginx
 
 1. Register a Domain Name using any domain registrar (e.g., GoDaddy, Bluehost).
 
+image 7
+
 2. Assign an Elastic IP to your Nginx server and associate your domain name with this Elastic IP.
 
-3. Follow this guide to allocate an Elastic IP and associate it with your EC2 instance.
+3. Follow the guide above to allocate an Elastic IP and associate it with your EC2 instance.
 
 4. Update the A record in your domain registrar to point to the Elastic IP of your Nginx server.
 
