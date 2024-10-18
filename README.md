@@ -81,7 +81,7 @@ server {
 ```
 Comment out this line: ```# include /etc/nginx/sites-enabled/*;```
 
-image 6
+![image 6]()
 
 3. Restart Nginx to apply the changes:
 
@@ -95,11 +95,13 @@ sudo systemctl status nginx
 
 1. Register a Domain Name using any domain registrar (e.g., GoDaddy, Bluehost).
 
-image 7
+![image 7]()
 
 2. Assign an Elastic IP to your Nginx server and associate your domain name with this Elastic IP.
 
-3. Follow the guide above to allocate an Elastic IP and associate it with your EC2 instance.
+3. Follow the guide below to allocate an Elastic IP and associate it with your EC2 instance.
+
+![image 8]()
 
 4. Update the A record in your domain registrar to point to the Elastic IP of your Nginx server.
 
@@ -120,7 +122,7 @@ server_name www.<your-domain-name>.com;
 ```
 sudo systemctl restart nginx
 ```
-
+![image 9]()
 
 ## Step 3: Install Certbot and Request an SSL Certificate
 
@@ -132,6 +134,7 @@ sudo systemctl status snapd
 ```
 sudo snap install --classic certbot
 ```
+![image 12]()
 
 3. Request an SSL certificate:
 
@@ -140,7 +143,11 @@ sudo ln -s /snap/bin/certbot /usr/bin/certbot
 sudo certbot --nginx
 ```
 
+![image 13]()
+
 Test secured access to your website by visiting `https://<your-domain-name>.com`.
+
+![image 10]()
 
 ## Step 4: Set Up SSL/TLS Certificate Renewal
 
@@ -159,6 +166,8 @@ crontab -e
 ```
 * */12 * * * root /usr/bin/certbot renew > /dev/null 2>&1
 ```
+
+![image 11]()
 
 We have now successfuly configured a Nginx based Load Balancer for our webservers, ensured it can be accessed by a domain name and has SSL installed for security.
 
