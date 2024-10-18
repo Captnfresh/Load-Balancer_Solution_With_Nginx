@@ -24,7 +24,7 @@ This project consists of two parts:
 
 Target architecture will look like:
 
-![image 1]()
+![image 1](https://github.com/Captnfresh/Load-Balancer_Solution_With_Nginx/blob/main/LBS%20with%20Nginx%20and%20SSL%20and%20TLS/image%201.jpg)
 
 
 ## Part 1: Configure Nginx as a Load Balancer
@@ -39,9 +39,9 @@ Target architecture will look like:
 
 * Update the /etc/hosts file for local DNS with the web servers' names (e.g., Web1, Web2) and their local IP addresses.
 
-![image 2]()
+![image 2](https://github.com/Captnfresh/Load-Balancer_Solution_With_Nginx/blob/main/LBS%20with%20Nginx%20and%20SSL%20and%20TLS/image%202.jpg)
 
-![image 3]()
+![image 3](https://github.com/Captnfresh/Load-Balancer_Solution_With_Nginx/blob/main/LBS%20with%20Nginx%20and%20SSL%20and%20TLS/image%203.jpg)
 
 
 2. Install and Configure Nginx as a Load Balancer.
@@ -51,9 +51,9 @@ Target architecture will look like:
 sudo apt update
 sudo apt install nginx
 ```
-![image 4]()
+![image 4](https://github.com/Captnfresh/Load-Balancer_Solution_With_Nginx/blob/main/LBS%20with%20Nginx%20and%20SSL%20and%20TLS/image%204.jpg)
 
-![image 5]()
+![image 5](https://github.com/Captnfresh/Load-Balancer_Solution_With_Nginx/blob/main/LBS%20with%20Nginx%20and%20SSL%20and%20TLS/image%205.jpg)
 
 
 * Open the Nginx configuration file:
@@ -81,7 +81,7 @@ server {
 ```
 Comment out this line: ```# include /etc/nginx/sites-enabled/*;```
 
-![image 6]()
+![image 6](https://github.com/Captnfresh/Load-Balancer_Solution_With_Nginx/blob/main/LBS%20with%20Nginx%20and%20SSL%20and%20TLS/image%206.jpg)
 
 3. Restart Nginx to apply the changes:
 
@@ -89,19 +89,19 @@ Comment out this line: ```# include /etc/nginx/sites-enabled/*;```
 sudo systemctl restart nginx
 sudo systemctl status nginx
 ```
-
+![iamge 7](https://github.com/Captnfresh/Load-Balancer_Solution_With_Nginx/blob/main/LBS%20with%20Nginx%20and%20SSL%20and%20TLS/iamge%207.jpg)
 
 ## Part 2: Register a Domain and Configure SSL/TLS Certificates
 
 1. Register a Domain Name using any domain registrar (e.g., GoDaddy, Bluehost).
 
-![image 7]()
+![image 7](https://github.com/Captnfresh/Load-Balancer_Solution_With_Nginx/blob/main/LBS%20with%20Nginx%20and%20SSL%20and%20TLS/image%207.jpg)
 
 2. Assign an Elastic IP to your Nginx server and associate your domain name with this Elastic IP.
 
 3. Follow the guide below to allocate an Elastic IP and associate it with your EC2 instance.
 
-![image 8]()
+![image 8](https://github.com/Captnfresh/Load-Balancer_Solution_With_Nginx/blob/main/LBS%20with%20Nginx%20and%20SSL%20and%20TLS/image%208.jpg)
 
 4. Update the A record in your domain registrar to point to the Elastic IP of your Nginx server.
 
@@ -122,7 +122,7 @@ server_name www.<your-domain-name>.com;
 ```
 sudo systemctl restart nginx
 ```
-![image 9]()
+![image 9](https://github.com/Captnfresh/Load-Balancer_Solution_With_Nginx/blob/main/LBS%20with%20Nginx%20and%20SSL%20and%20TLS/image%209.jpg)
 
 ## Step 3: Install Certbot and Request an SSL Certificate
 
@@ -134,7 +134,7 @@ sudo systemctl status snapd
 ```
 sudo snap install --classic certbot
 ```
-![image 12]()
+![image 12](https://github.com/Captnfresh/Load-Balancer_Solution_With_Nginx/blob/main/LBS%20with%20Nginx%20and%20SSL%20and%20TLS/image%2012.jpg)
 
 3. Request an SSL certificate:
 
@@ -143,11 +143,11 @@ sudo ln -s /snap/bin/certbot /usr/bin/certbot
 sudo certbot --nginx
 ```
 
-![image 13]()
+![image 13](https://github.com/Captnfresh/Load-Balancer_Solution_With_Nginx/blob/main/LBS%20with%20Nginx%20and%20SSL%20and%20TLS/image%2013.jpg)
 
 Test secured access to your website by visiting `https://<your-domain-name>.com`.
 
-![image 10]()
+![image 14](https://github.com/Captnfresh/Load-Balancer_Solution_With_Nginx/blob/main/LBS%20with%20Nginx%20and%20SSL%20and%20TLS/image%2014.jpg)
 
 ## Step 4: Set Up SSL/TLS Certificate Renewal
 
@@ -167,7 +167,7 @@ crontab -e
 * */12 * * * root /usr/bin/certbot renew > /dev/null 2>&1
 ```
 
-![image 11]()
+![image 11](https://github.com/Captnfresh/Load-Balancer_Solution_With_Nginx/blob/main/LBS%20with%20Nginx%20and%20SSL%20and%20TLS/image%2011.jpg)
 
 We have now successfuly configured a Nginx based Load Balancer for our webservers, ensured it can be accessed by a domain name and has SSL installed for security.
 
